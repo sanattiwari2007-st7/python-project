@@ -1,0 +1,30 @@
+def calculate_student_gpa(grades):
+    """Converts letter grades to points and returns the average."""
+
+    grade_map = {'A': 4.0, 'B': 3.0, 'C': 2.0, 'D': 1.0, 'F': 0.0}
+    
+    total_points = sum(grade_map.get(g.upper(), 0) for g in grades)
+    return total_points / len(grades) if grades else 0
+
+
+class_data = {
+    "Alice": ["A", "B", "A"],
+    "Bob": ["B", "C", "B"],
+    "Charlie": ["A", "A", "A"]
+}
+
+print(f"{'Student':<10} | {'GPA':<5}")
+print("-" * 18)
+
+all_gpas = []
+
+for student, grades in class_data.items():
+    gpa = calculate_student_gpa(grades)
+    all_gpas.append(gpa)
+    print(f"{student:<10} | {gpa:.2f}")
+
+class_average = sum(all_gpas) / len(all_gpas)
+print("-" * 18)
+print(f"Class Average GPA: {class_average:.2f}")
+
+
